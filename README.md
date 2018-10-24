@@ -7,3 +7,4 @@ https://github.com/anguy116/SEG_Project1
 Andrew Nguyen
 Maaz Ahmad
 Mohammad Rashadur Rahman
+Richard Guan
