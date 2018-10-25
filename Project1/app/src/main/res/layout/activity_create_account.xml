@@ -83,7 +83,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="(Repeat Password)"
-            android:inputType="numberPassword" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/saveInfo"
