@@ -39,12 +39,12 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/UsernameEnter"
+                android:id="@+id/EmailEnter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/username1"
+                android:hint="(Enter Your Email)"
                 android:inputType="textPersonName" />
 
             <TextView
