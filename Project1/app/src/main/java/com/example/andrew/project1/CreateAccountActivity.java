@@ -102,6 +102,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             validUser = false;
         }
 
+        if (validUser == true){
+            HomeOwnerUser newComp = new HomeOwnerUser(email, password, firstName, lastName, address, phone);
+            UserList.users.add(newComp);
+        }
+
         return validUser;
     }
 }

@@ -4,14 +4,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 public class LoginSignUp extends AppCompatActivity implements View.OnClickListener {
+    EditText editTextEmailEnter, editTextPasswordEnter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_sign_up);
         findViewById(R.id.createAccountButton).setOnClickListener(this);
+        findViewById(R.id.LogIn).setOnClickListener(this);
+        editTextEmailEnter = (EditText)findViewById(R.id.EmailEnter);
+        editTextPasswordEnter = (EditText)findViewById(R.id.PasswordEnter);
     }
 
     public void createAccountButton(View view) {
@@ -31,6 +40,55 @@ public class LoginSignUp extends AppCompatActivity implements View.OnClickListen
             case R.id.createAccountButton:
                 startActivity(new Intent(this, RoleActivity.class));
                 break;
+
+            case R.id.LogIn:
+                if (verifyUser()){
+                    startActivity(new Intent(this, LoggedInActivity.class));
+                }
+
+                break;
+
         }
+    }
+    private boolean verifyUser(){
+        boolean flag = false;
+        Iterator<HomeOwnerUser> itr = UserList.users.iterator();
+        Iterator<ServiceProviderUser> it = UserList.providers.iterator();
+        String element = editTextEmailEnter.getText().toString();
+        //String company = editTextCompany.getText().toString()
+        String pass = editTextPasswordEnter.getText().toString();
+        int start = 0;
+        while (itr.hasNext()){
+            if (UserList.users.get(start).getEmail().equals(element)){
+                if(UserList.users.get(start).getPassword().equals(pass)==false){
+                    editTextPasswordEnter.setError("incorrect username or password");
+                    editTextPasswordEnter.requestFocus();
+                    return false;
+                }
+            }
+            start++;
+        }
+
+        int check = 0;
+        while (it.hasNext()){
+            if (UserList.providers.get(start).getEmail().equals(element)){
+
+                if(UserList.providers.get(start).getPassword().equals(pass)==false){
+                    editTextPasswordEnter.setError("incorrect username or password");
+                    editTextPasswordEnter.requestFocus();
+                    return false;
+                }
+            }
+            check++;
+        }
+
+        if (flag == false){
+            editTextEmailEnter.setError("incorrect username or password");
+            editTextEmailEnter.requestFocus();
+            editTextPasswordEnter.requestFocus();
+
+        }
+
+        return flag;
     }
 }

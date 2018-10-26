@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 public class CreateProviderAccountActivity extends AppCompatActivity implements View.OnClickListener{
     EditText editTextCompany, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword;
@@ -30,6 +33,7 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
                 break;
         }
     }
+
     private boolean registerUser() {
         boolean validCompany = true;
         String company = editTextCompany.getText().toString().trim();
@@ -73,6 +77,11 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
             editTextConfirmPassword.setError("Passwords must match");
             editTextConfirmPassword.requestFocus();
             validCompany = false;
+        }
+
+        if (validCompany == true){
+            ServiceProviderUser newComp = new ServiceProviderUser(email, password, company, phone);
+            UserList.providers.add(newComp);
         }
 
         return validCompany;
