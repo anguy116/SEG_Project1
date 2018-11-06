@@ -24,7 +24,8 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".LoggedInActivity" />
         <activity android:name=".RoleActivity" />
-        <activity android:name=".CreateProviderAccountActivity"></activity>
+        <activity android:name=".CreateProviderAccountActivity" />
+        <activity android:name=".ServiceActivity"></activity>
     </application>
 
 </manifest>
