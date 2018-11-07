@@ -47,11 +47,11 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/Add"
+                    android:id="@+id/EDIT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="ADD" />
+                    android:text="EDIT" />
 
                 <Button
                     android:id="@+id/Delete"
@@ -68,10 +68,10 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/AddUser"
+                    android:id="@+id/CreateService"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Add User" />
+                    android:text="Create Service" />
             </LinearLayout>
 
         </LinearLayout>
