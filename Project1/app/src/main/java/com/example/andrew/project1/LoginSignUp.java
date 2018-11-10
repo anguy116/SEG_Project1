@@ -57,30 +57,33 @@ public class LoginSignUp extends AppCompatActivity implements View.OnClickListen
         String element = editTextEmailEnter.getText().toString();
         //String company = editTextCompany.getText().toString()
         String pass = editTextPasswordEnter.getText().toString();
-        int start = 0;
-        while (itr.hasNext()){
-            if (UserList.users.get(start).getEmail().equals(element)){
-                if(UserList.users.get(start).getPassword().equals(pass)==false){
+
+        for (int a = 0; a< UserList.users.size();a++){
+            Log.d(element, UserList.users.get(a).getEmail());
+            if (UserList.users.get(a).getEmail().equals(element)){
+                if(!UserList.users.get(a).getPassword().equals(pass)){
                     editTextPasswordEnter.setError("incorrect username or password");
                     editTextPasswordEnter.requestFocus();
                     return false;
+                } else {
+                    return true;
                 }
             }
-            start++;
         }
 
-        int check = 0;
-        while (it.hasNext()){
-            if (UserList.providers.get(start).getEmail().equals(element)){
-
-                if(UserList.providers.get(start).getPassword().equals(pass)==false){
+        for (int b = 0; b< UserList.providers.size();b++){
+            Log.d(element, UserList.providers.get(b).getEmail());
+            if (UserList.providers.get(b).getEmail().equals(element)){
+                if(!UserList.providers.get(b).getPassword().equals(pass)){
                     editTextPasswordEnter.setError("incorrect username or password");
                     editTextPasswordEnter.requestFocus();
                     return false;
+                } else {
+                    return true;
                 }
             }
-            check++;
         }
+
 
         if (flag == false){
             editTextEmailEnter.setError("incorrect username or password");
