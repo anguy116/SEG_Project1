@@ -8,3 +8,6 @@ Andrew Nguyen
 Maaz Ahmad
 Mohammad Rashadur Rahman
 Richard Guan
+
+USERNAME: admin
+PASSWORD: admin123
