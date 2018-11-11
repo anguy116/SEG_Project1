@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -52,35 +53,49 @@ public class LoginSignUp extends AppCompatActivity implements View.OnClickListen
     }
     private boolean verifyUser(){
         boolean flag = false;
-        Iterator<HomeOwnerUser> itr = UserList.users.iterator();
-        Iterator<ServiceProviderUser> it = UserList.providers.iterator();
+//        Iterator<HomeOwnerUser> itr = UserList.users.iterator();
+//        Iterator<ServiceProviderUser> it = UserList.providers.iterator();
         String element = editTextEmailEnter.getText().toString();
         //String company = editTextCompany.getText().toString()
         String pass = editTextPasswordEnter.getText().toString();
 
         for (int a = 0; a< UserList.users.size();a++){
-            Log.d(element, UserList.users.get(a).getEmail());
+
             if (UserList.users.get(a).getEmail().equals(element)){
                 if(!UserList.users.get(a).getPassword().equals(pass)){
                     editTextPasswordEnter.setError("incorrect username or password");
                     editTextPasswordEnter.requestFocus();
                     return false;
                 } else {
+                    UserList.current = UserList.users.get(a);
+                    UserList.welcome = "Welcome "+((HomeOwnerUser) UserList.current).getFirstName()+", you are signed in as a home owner";
                     return true;
                 }
             }
         }
 
         for (int b = 0; b< UserList.providers.size();b++){
-            Log.d(element, UserList.providers.get(b).getEmail());
+
             if (UserList.providers.get(b).getEmail().equals(element)){
                 if(!UserList.providers.get(b).getPassword().equals(pass)){
                     editTextPasswordEnter.setError("incorrect username or password");
                     editTextPasswordEnter.requestFocus();
                     return false;
                 } else {
+                    UserList.current = UserList.providers.get(b);
+                    UserList.welcome = "Welcome "+((ServiceProviderUser) UserList.current).getName()+", you are signed in as a service provider";
                     return true;
                 }
+            }
+        }
+
+        if (element.equals("admin")){
+            if (pass.equals("admin123")){
+                UserList.welcome = "You are logged in as admin";
+
+                return true;
+            } else {
+                return false;
             }
         }
 

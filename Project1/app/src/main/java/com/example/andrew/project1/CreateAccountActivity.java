@@ -26,6 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         switch(view.getId()) {
             case R.id.saveInfo:
                 if (registerUser()){
+
                     startActivity(new Intent(this, LoggedInActivity.class));
                 }
 
@@ -105,6 +106,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if (validUser == true){
             HomeOwnerUser newComp = new HomeOwnerUser(email, password, firstName, lastName, address, phone);
             UserList.users.add(newComp);
+
+            UserList.welcome = "Welcome "+newComp.getFirstName()+", you are signed in as a home owner";
         }
 
         return validUser;

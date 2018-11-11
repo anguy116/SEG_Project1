@@ -18,4 +18,7 @@ public class UserList {
     public void addProvider(ServiceProviderUser newProvider){
         providers.add(newProvider);
     }
+
+    public static User current;
+    public static String welcome;
 }

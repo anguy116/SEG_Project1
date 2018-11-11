@@ -9,6 +9,8 @@ public class ServiceProviderUser extends User {
     public ServiceProviderUser (String email, String password, String companyName, String phoneNumber){
         this.email = email;
         this.password = password;
+        this.companyName=companyName;
+        this.phoneNumber=phoneNumber;
     }
 
     public String getEmail() {

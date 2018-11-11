@@ -27,6 +27,7 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         switch(view.getId()) {
             case R.id.saveInfo:
                 if (registerUser()){
+
                     startActivity(new Intent(this, LoggedInActivity.class));
                 }
 
@@ -82,6 +83,7 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         if (validCompany == true){
             ServiceProviderUser newComp = new ServiceProviderUser(email, password, company, phone);
             UserList.providers.add(newComp);
+            UserList.welcome = "Welcome "+newComp.getName()+", you are signed in as a service provider";
         }
 
         return validCompany;
