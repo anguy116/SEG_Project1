@@ -77,6 +77,12 @@
             android:hint="(Confirm Password)"
             android:inputType="textPassword" />
 
+        <CheckBox
+            android:id="@+id/Licensed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Licensed" />
+
         <Button
             android:id="@+id/saveInfo"
             android:layout_width="wrap_content"

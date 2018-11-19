@@ -51,6 +51,7 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
         startActivityForResult (intent,0);
     }
 
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TextView service = (TextView) findViewById(R.id.services);
         String reply = data.getStringExtra(ProviderEditServiceActivity.EXTRA_REPLY);

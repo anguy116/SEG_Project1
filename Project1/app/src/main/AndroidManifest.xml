@@ -27,7 +27,7 @@
         <activity android:name=".CreateProviderAccountActivity" />
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ServiceProviderScreenActivity" />
-        <activity android:name=".ProviderEditServiceActivity"></activity>
+        <activity android:name=".ProviderEditServiceActivity" />
     </application>
 
 </manifest>
