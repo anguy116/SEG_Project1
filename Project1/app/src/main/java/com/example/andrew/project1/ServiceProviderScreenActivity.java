@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ServiceProviderScreenActivity extends AppCompatActivity {
-    TextView nameTextView, addressTextView, numberTextView, descriptionTextView, serviceTextView;
+    TextView nameTextView, addressTextView, numberTextView, descriptionTextView, serviceTextView, licenseTextView;
     public static final String EXTRA_MESSAGE =
             "com.example.andrew.project1.extra.MESSAGE";
     @Override
@@ -41,6 +41,17 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
         String serve = LoginSignUp.prov.getServices();
         String fullS = "Services: " + serve;
         serviceTextView.setText(fullS);
+
+        licenseTextView = (TextView) findViewById(R.id.license);
+        if (CreateProviderAccountActivity.licensed1==true){
+            String lic = "We are licensed!";
+            licenseTextView.setText(lic);
+        } else if (CreateProviderAccountActivity.licensed1==false){
+            String lic = "Not licensed";
+            licenseTextView.setText(lic);
+        }
+
+
 
     }
 

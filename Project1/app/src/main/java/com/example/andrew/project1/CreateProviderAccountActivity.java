@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,6 +14,9 @@ import java.util.ListIterator;
 
 public class CreateProviderAccountActivity extends AppCompatActivity implements View.OnClickListener{
     EditText editTextCompany, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword, editTextAddress, editTextDescription;
+    CheckBox checkBoxLicense;
+    public static boolean licensed1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,8 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         editTextPassword = (EditText)findViewById(R.id.password);
         editTextConfirmPassword = (EditText)findViewById(R.id.confirmPassword);
         editTextDescription = (EditText)findViewById(R.id.description);
+        checkBoxLicense = (CheckBox)findViewById(R.id.licensed);
+
     }
     public void onClick(View view){
         switch(view.getId()) {
@@ -37,8 +44,10 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         }
     }
 
+
     private boolean registerUser() {
         boolean validCompany = true;
+        licensed1 = false;
         String company = editTextCompany.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
@@ -93,6 +102,10 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
             editTextConfirmPassword.setError("Passwords must match");
             editTextConfirmPassword.requestFocus();
             validCompany = false;
+        }
+
+        if (checkBoxLicense.isChecked()){
+            licensed1 = true;
         }
 
         if (validCompany == true){
