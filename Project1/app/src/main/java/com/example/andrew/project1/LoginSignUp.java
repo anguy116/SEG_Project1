@@ -13,6 +13,8 @@ import java.util.ListIterator;
 
 public class LoginSignUp extends AppCompatActivity implements View.OnClickListener {
     EditText editTextEmailEnter, editTextPasswordEnter;
+    public static HomeOwnerUser home;
+    public static ServiceProviderUser prov;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,7 @@ public class LoginSignUp extends AppCompatActivity implements View.OnClickListen
                 } else {
                     UserList.current = UserList.providers.get(b);
                     UserList.welcome = "Welcome "+((ServiceProviderUser) UserList.current).getName()+", you are signed in as a service provider";
+                    prov = UserList.providers.get(b);
                     return true;
                 }
             }

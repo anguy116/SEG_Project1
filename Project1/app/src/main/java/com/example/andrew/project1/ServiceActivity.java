@@ -64,7 +64,7 @@ public class ServiceActivity extends AppCompatActivity {
     Spinner spin;
     EditText nameTxt, rateTxt;
     Button createServiceButton, editButton, deleteButton;
-    ArrayList<String> serviceNames=new ArrayList<String>();
+    public static ArrayList<String> serviceNames=new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
     public static ArrayList<Services> serviceList=new ArrayList<Services>();

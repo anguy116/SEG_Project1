@@ -21,10 +21,20 @@ public class LoggedInActivity extends AppCompatActivity {
             Button services = findViewById(R.id.serviceButton);
             services.setVisibility(View.VISIBLE);
         }
+
+        if (UserList.welcome.contains("service")){
+            Button serviceP = findViewById(R.id.serviceProfile);
+            serviceP.setVisibility(View.VISIBLE);
+        }
     }
 
     public void servicesButton(View view){
         Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
+        startActivityForResult (intent,0);
+    }
+
+    public void spButton(View view){
+        Intent intent = new Intent(getApplicationContext(), ServiceProviderScreenActivity.class);
         startActivityForResult (intent,0);
     }
 

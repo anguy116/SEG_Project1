@@ -24,5 +24,13 @@
             android:onClick="servicesButton"
             android:text="Services"
             android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/serviceProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="spButton"
+            android:text="Profile"
+            android:visibility="invisible" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

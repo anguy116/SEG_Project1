@@ -26,8 +26,8 @@
         <activity android:name=".RoleActivity" />
         <activity android:name=".CreateProviderAccountActivity" />
         <activity android:name=".ServiceActivity" />
-        <activity android:name=".EditService" />
-        <activity android:name=".AddService"></activity>
+        <activity android:name=".ServiceProviderScreenActivity" />
+        <activity android:name=".ProviderEditServiceActivity"></activity>
     </application>
 
 </manifest>

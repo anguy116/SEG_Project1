@@ -20,5 +20,5 @@ public class UserList {
     }
 
     public static User current;
-    public static String welcome;
+    public static String welcome = "";
 }

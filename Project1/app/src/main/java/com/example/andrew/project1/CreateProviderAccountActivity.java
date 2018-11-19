@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 public class CreateProviderAccountActivity extends AppCompatActivity implements View.OnClickListener{
-    EditText editTextCompany, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword;
+    EditText editTextCompany, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword, editTextAddress, editTextDescription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +20,10 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         editTextCompany = (EditText)findViewById(R.id.companyName);
         editTextPhone = (EditText)findViewById(R.id.phoneNumber);
         editTextEmail = (EditText)findViewById(R.id.email);
+        editTextAddress = (EditText)findViewById(R.id.address);
         editTextPassword = (EditText)findViewById(R.id.password);
         editTextConfirmPassword = (EditText)findViewById(R.id.confirmPassword);
+        editTextDescription = (EditText)findViewById(R.id.description);
     }
     public void onClick(View view){
         switch(view.getId()) {
@@ -42,6 +44,8 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
+        String address = editTextAddress.getText().toString().trim();
+        String description = editTextDescription.getText().toString().trim();
 
 
         if (company.isEmpty()){
@@ -64,6 +68,17 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
             editTextEmail.requestFocus();
             validCompany = false;
         }
+
+        if (address.isEmpty()){
+            editTextAddress.setError("Address is required");
+            editTextAddress.requestFocus();
+            validCompany = false;
+        }
+        if (address.matches("^([A-Za-z]|[0-9])+$")){
+            editTextAddress.setError("Address must be valid");
+            editTextAddress.requestFocus();
+            validCompany = false;
+        }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextEmail.setError("Email must be valid");
             editTextEmail.requestFocus();
@@ -81,7 +96,15 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         }
 
         if (validCompany == true){
-            ServiceProviderUser newComp = new ServiceProviderUser(email, password, company, phone);
+            ServiceProviderUser newComp;
+            if (description.equals("")){
+                newComp = new ServiceProviderUser(email, password, company, address, phone, true);
+            } else {
+                newComp = new ServiceProviderUser(email, password, company, description, address, phone, true);
+            }
+
+            LoginSignUp.prov= newComp;
+
             UserList.providers.add(newComp);
             UserList.welcome = "Welcome "+newComp.getName()+", you are signed in as a service provider";
         }
