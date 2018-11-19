@@ -50,6 +50,14 @@ public class ServiceProviderUser extends User {
         services.add(service);
     }
 
+    public void removeServices(String service){
+        if (services.contains(service)){
+            services.remove(service);
+        } else{
+            return;
+        }
+    }
+
     public int numberOfService(){
         return services.size();
     }

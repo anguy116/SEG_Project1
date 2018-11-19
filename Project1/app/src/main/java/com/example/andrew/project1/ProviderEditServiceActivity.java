@@ -71,4 +71,22 @@ public class ProviderEditServiceActivity extends AppCompatActivity {
 //
 //
 //    }
+    public void removeButton(View view) {
+        if (LoginSignUp.prov.getServices().equals("no services")) {
+            Intent data = new Intent();
+            String newService = LoginSignUp.prov.getServices();
+            data.putExtra (EXTRA_REPLY, newService);
+            setResult(RESULT_OK, data);
+            finish();
+            return;
+        } else {
+            LoginSignUp.prov.removeServices(spin2.getSelectedItem().toString());
+            Intent data = new Intent();
+            String newService = LoginSignUp.prov.getServices();
+            data.putExtra (EXTRA_REPLY, newService);
+            setResult(RESULT_OK, data);
+            finish();
+            return;
+        }
+    }
 }
