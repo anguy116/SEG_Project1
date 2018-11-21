@@ -64,6 +64,8 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_CANCELED) return;
+
         TextView service = (TextView) findViewById(R.id.services);
         String reply = data.getStringExtra(ProviderEditServiceActivity.EXTRA_REPLY);
         service.setText(reply);
