@@ -12,6 +12,7 @@ public class ServiceProviderUser extends User {
     private String availability;
     private boolean licensed;
     private ArrayList<String> services;
+    private boolean[] available;
 
     public ServiceProviderUser (String email, String password, String companyName, String address, String phoneNumber, boolean licensed){
         this.email = email;
@@ -22,6 +23,12 @@ public class ServiceProviderUser extends User {
         description = "";
         this.licensed = licensed;
         services = new ArrayList<String>();
+        available = new boolean[7];
+
+        for (int a =0; a<7; a++){
+            available[a] = false;
+        }
+
     }
 
     public ServiceProviderUser (String email, String password, String companyName, String description, String address, String phoneNumber, boolean licensed){
@@ -33,6 +40,11 @@ public class ServiceProviderUser extends User {
         this.address = address;
         this.licensed = licensed;
         services = new ArrayList<String>();
+        available = new boolean[7];
+
+        for (int a =0; a<7; a++){
+            available[a] = false;
+        }
     }
 
     public String getServices() {
@@ -50,6 +62,14 @@ public class ServiceProviderUser extends User {
             return big;
         }
         return "no services";
+    }
+
+    public void setAvailable(boolean today, int day) {
+        available[day] = today;
+    }
+
+    public boolean getAvailable(int index) {
+        return available[index];
     }
 
     public void addServices(String service){
