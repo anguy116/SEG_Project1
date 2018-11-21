@@ -10,47 +10,31 @@ import org.junit.Test;
 public class UnitTest {
 
     @Test
-    public void testRegisterUser() {
-        ServiceProviderUser sp = new ServiceProviderUser("testCase@uottawa.ca", "123456", "Tester01", "001");
-        String actual = sp.getEmail() + ", " + sp.getPassword() + ", " + sp.getName() + ", " + sp.getPhoneNumber();
-        String expected = "testCase@uottawa.ca, 123456, Tester01, 001";
-        assertEquals("Test for registerUser() in Class ServiceProviderUser failed", expected, actual);
+    public void testAddServices() {
+        ServiceProviderUser provider01 = new ServiceProviderUser("testCase@uottawa.ca", "123456", "testCompany01", "testAddress001", "123456789",true);
+        Services weFixStuff = new Services("WeFixStuff", 100);
+        Services weBreakStuff = new Services("WeBreakStuff", 0);
+        provider01.addServices("WeFixStuff");
+        provider01.addServices("WeBreakStuff");
+        String expected = "WeFixStuff,WeBreakStuff";
+        String actual = provider01.getServices();
+        assertEquals("Test for addServices() in Class ServiceProviderUser failed", expected, actual);
     }
 
     @Test
-    public void testServices() {
-        Services serviceExample = new Services("Tester02", 120);
-        String actual = serviceExample.getServiceName() + ", " + serviceExample.getRate();
-        String expected = "Tester02, 120";
-        assertEquals("Test for constructor in Class Services failed", expected, actual);
-    }
-
-    @Test
-    public void testHomeOwnerUser() {
-        HomeOwnerUser houExample = new HomeOwnerUser("testCase@uottawa.ca", "123456", "Tester", "Tester", "003 Test Street Testville ON", "003");
-        String actual = houExample.getEmail() + ", " + houExample.getPassword() + ", " + houExample.getFirstName() + ", " + houExample.getLastName() + ", " + houExample.getAddress() + ", " + houExample.getPhoneNumber();
-        String expected = "testCase@uottawa.ca, 123456, Tester, Tester, 003 Test Street Testville ON, 003";
-        assertEquals("Test for constructor in Class HomeOwnerUser failed", expected, actual);
-    }
-
-    @Test
-    public void testAddHomeOwner() {
-        HomeOwnerUser houExample = new HomeOwnerUser("testCase@uottawa.ca", "123456", "Tester", "Tester", "003 Test Street Testville ON", "003");
-        UserList testList = new UserList();
-        testList.addHomeOwner(houExample);
-        int actual = testList.users.size();
-        int expected = 1;
-        assertEquals("Test for addHomeOwner() in Class UserList failed", expected, actual);
-    }
-
-    @Test
-    public void testAddProvider() {
-        ServiceProviderUser sp = new ServiceProviderUser("testCase@uottawa.ca", "123456", "Tester01", "001");
-        UserList testList = new UserList();
-        testList.addProvider(sp);
-        int actual = testList.providers.size();
-        int expected = 1;
-        assertEquals("Test for addProvider() in Class UserList failed", expected, actual);
+    public void testRemoveServices() {
+        ServiceProviderUser provider01 = new ServiceProviderUser("testCase@uottawa.ca", "123456", "testCompany01", "testAddress001", "123456789",true);
+        Services weFixStuff = new Services("WeFixStuff", 100);
+        Services weBreakStuff = new Services("WeBreakStuff", 0);
+        Services weTestStuff = new Services("WeTestStuff", 50);
+        provider01.addServices("WeFixStuff");
+        provider01.addServices("WeBreakStuff");
+        provider01.addServices("WeTestStuff");
+        provider01.removeServices("WeFixStuff");
+        provider01.removeServices("WeTestStuff");
+        String expected = "WeBreakStuff";
+        String actual = provider01.getServices();
+        assertEquals("Test for removeServices() in Class ServiceProviderUser failed", expected, actual);
     }
 }
 

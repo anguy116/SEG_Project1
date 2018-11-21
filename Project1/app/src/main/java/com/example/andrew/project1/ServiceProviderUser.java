@@ -39,7 +39,13 @@ public class ServiceProviderUser extends User {
         String big = "";
         if (!services.isEmpty()){
             for (int a = 0; a<services.size(); a++){
-                big = big + services.get(a)+ ",";
+                // If it is the last element in the list, do not add the end comma
+                if (a == services.size() -1) {
+                    big = big + services.get(a);
+                }
+                else {
+                    big = big + services.get(a) + ",";
+                }
             }
             return big;
         }
