@@ -15,7 +15,8 @@
             android:id="@+id/welcomeScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="‘Welcome firstname! You are logged in as role" />
+            android:text="‘Welcome firstname! You are logged in as role"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/serviceButton"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:onClick="servicesButton"
             android:text="Services"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/serviceProfile"
@@ -31,6 +32,22 @@
             android:layout_height="wrap_content"
             android:onClick="spButton"
             android:text="Profile"
-            android:visibility="invisible" />
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="searchButton"
+            android:text="FIND A SERVICE PROVIDER"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/viewBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="bookingsButton"
+            android:text="View Bookings"
+            android:visibility="gone" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -28,6 +28,10 @@
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ServiceProviderScreenActivity" />
         <activity android:name=".ProviderEditServiceActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".ServiceProviderUserScreenActivity" />
+        <activity android:name=".BookingsActivity" />
+        <activity android:name=".SearchResultsActivity"></activity>
     </application>
 
 </manifest>

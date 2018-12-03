@@ -71,6 +71,7 @@ public class LoginSignUp extends AppCompatActivity implements View.OnClickListen
                 } else {
                     UserList.current = UserList.users.get(a);
                     UserList.welcome = "Welcome "+((HomeOwnerUser) UserList.current).getFirstName()+", you are signed in as a home owner";
+                    home = UserList.users.get(a);
                     return true;
                 }
             }

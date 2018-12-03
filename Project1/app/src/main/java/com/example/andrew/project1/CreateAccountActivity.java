@@ -3,6 +3,7 @@ package com.example.andrew.project1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -106,7 +107,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if (validUser == true){
             HomeOwnerUser newComp = new HomeOwnerUser(email, password, firstName, lastName, address, phone);
             UserList.users.add(newComp);
-
+            LoginSignUp.home= newComp;
             UserList.welcome = "Welcome "+newComp.getFirstName()+", you are signed in as a home owner";
         }
 

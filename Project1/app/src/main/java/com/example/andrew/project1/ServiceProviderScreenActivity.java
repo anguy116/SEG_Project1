@@ -46,10 +46,10 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
         serviceTextView.setText(fullS);
 
         licenseTextView = (TextView) findViewById(R.id.license);
-        if (CreateProviderAccountActivity.licensed1==true){
+        if (LoginSignUp.prov.isLicensed()){
             String lic = "We are licensed!";
             licenseTextView.setText(lic);
-        } else if (CreateProviderAccountActivity.licensed1==false){
+        } else if (!LoginSignUp.prov.isLicensed()){
             String lic = "Not licensed";
             licenseTextView.setText(lic);
         }

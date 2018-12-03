@@ -15,7 +15,7 @@ import java.util.ListIterator;
 public class CreateProviderAccountActivity extends AppCompatActivity implements View.OnClickListener{
     EditText editTextCompany, editTextPhone, editTextEmail, editTextPassword, editTextConfirmPassword, editTextAddress, editTextDescription;
     CheckBox checkBoxLicense;
-    public static boolean licensed1;
+    boolean licensed1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         editTextConfirmPassword = (EditText)findViewById(R.id.confirmPassword);
         editTextDescription = (EditText)findViewById(R.id.description);
         checkBoxLicense = (CheckBox)findViewById(R.id.licensed);
-
     }
     public void onClick(View view){
         switch(view.getId()) {
@@ -111,9 +110,9 @@ public class CreateProviderAccountActivity extends AppCompatActivity implements 
         if (validCompany == true){
             ServiceProviderUser newComp;
             if (description.equals("")){
-                newComp = new ServiceProviderUser(email, password, company, address, phone, true);
+                newComp = new ServiceProviderUser(email, password, company, address, phone, licensed1);
             } else {
-                newComp = new ServiceProviderUser(email, password, company, description, address, phone, true);
+                newComp = new ServiceProviderUser(email, password, company, description, address, phone, licensed1);
             }
 
             LoginSignUp.prov= newComp;

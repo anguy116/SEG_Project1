@@ -26,6 +26,13 @@ public class LoggedInActivity extends AppCompatActivity {
             Button serviceP = findViewById(R.id.serviceProfile);
             serviceP.setVisibility(View.VISIBLE);
         }
+
+        if (UserList.welcome.contains("home")){
+            Button search = findViewById(R.id.search);
+            search.setVisibility(View.VISIBLE);
+            Button bookings = findViewById(R.id.viewBook);
+            bookings.setVisibility(View.VISIBLE);
+        }
     }
 
     public void servicesButton(View view){
@@ -35,6 +42,16 @@ public class LoggedInActivity extends AppCompatActivity {
 
     public void spButton(View view){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderScreenActivity.class);
+        startActivityForResult (intent,0);
+    }
+
+    public void searchButton(View view){
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivityForResult (intent,0);
+    }
+
+    public void bookingsButton(View view){
+        Intent intent = new Intent(getApplicationContext(), BookingsActivity.class);
         startActivityForResult (intent,0);
     }
 
