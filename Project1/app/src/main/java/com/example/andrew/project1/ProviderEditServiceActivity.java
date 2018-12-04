@@ -32,7 +32,7 @@ public class ProviderEditServiceActivity extends AppCompatActivity {
             for (int a = 0; a < LoginSignUp.prov.numberOfService(); a++) {
                 if (LoginSignUp.prov.serviceAt(a).equals(spin2.getSelectedItem().toString())) {
                     Intent data = new Intent();
-                    String newService = LoginSignUp.prov.getServices();
+                    String newService = "Services: " + LoginSignUp.prov.getServices();
                     data.putExtra (EXTRA_REPLY, newService);
                     setResult(RESULT_OK, data);
                     Log.d("ok", "here?");
@@ -55,7 +55,7 @@ public class ProviderEditServiceActivity extends AppCompatActivity {
 //
             LoginSignUp.prov.addServices(spin2.getSelectedItem().toString());
             Intent data = new Intent();
-            String newService = LoginSignUp.prov.getServices();
+            String newService = "Services: "+LoginSignUp.prov.getServices();
             data.putExtra (EXTRA_REPLY, newService);
             setResult(RESULT_OK, data);
             finish();

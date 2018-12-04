@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,6 +35,23 @@ public class SearchActivity extends AppCompatActivity {
         serviceSpin = (Spinner)findViewById(R.id.serviceList1);
         adapters = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, serveList);
         serviceSpin.setAdapter(adapters);
+
+
+        serviceSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!serviceSpin.getSelectedItem().toString().equals("ANY")){
+                    makeBothUnclickable();
+                } else{
+                    makeBothClickable();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         sResultSpin = (Spinner)findViewById(R.id.sResult);
         otherAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, searches);
@@ -139,6 +157,35 @@ public class SearchActivity extends AppCompatActivity {
     Spinner serviceSpin, sResultSpin;
     ArrayAdapter<String> adapters, otherAdapter;
 
+    private void makeBothUnclickable(){
+        sun.setEnabled(false);
+        mon.setEnabled(false);
+        tues.setEnabled(false);
+        wed.setEnabled(false);
+        thurs.setEnabled(false);
+        fri.setEnabled(false);
+        sat.setEnabled(false);
+        rating1.setEnabled(false);
+        rating2.setEnabled(false);
+        rating3.setEnabled(false);
+        rating4.setEnabled(false);
+    }
+
+    private void makeBothClickable(){
+        sun.setEnabled(true);
+        mon.setEnabled(true);
+        tues.setEnabled(true);
+        wed.setEnabled(true);
+        thurs.setEnabled(true);
+        fri.setEnabled(true);
+        sat.setEnabled(true);
+        rating1.setEnabled(true);
+        rating2.setEnabled(true);
+        rating3.setEnabled(true);
+        rating4.setEnabled(true);
+    }
+
+
     private void makeDaysUnclickable(){
         sun.setEnabled(false);
         mon.setEnabled(false);
@@ -147,6 +194,18 @@ public class SearchActivity extends AppCompatActivity {
         thurs.setEnabled(false);
         fri.setEnabled(false);
         sat.setEnabled(false);
+        serviceSpin.setEnabled(false);
+    }
+
+    private void makeDaysClickable(){
+        sun.setEnabled(true);
+        mon.setEnabled(true);
+        tues.setEnabled(true);
+        wed.setEnabled(true);
+        thurs.setEnabled(true);
+        fri.setEnabled(true);
+        sat.setEnabled(true);
+        serviceSpin.setEnabled(true);
     }
 
     private void makeRatingUnclickable(){
@@ -155,11 +214,13 @@ public class SearchActivity extends AppCompatActivity {
             rating2.setEnabled(false);
             rating3.setEnabled(false);
             rating4.setEnabled(false);
+            serviceSpin.setEnabled(false);
         } else {
             rating1.setEnabled(true);
             rating2.setEnabled(true);
             rating3.setEnabled(true);
             rating4.setEnabled(true);
+            serviceSpin.setEnabled(true);
         }
     }
 
@@ -169,8 +230,11 @@ public class SearchActivity extends AppCompatActivity {
             rating1.setChecked(false);
             rating2.setChecked(false);
             rating3.setChecked(false);
+            makeDaysUnclickable();
+        } else{
+            makeDaysClickable();
         }
-        makeDaysUnclickable();
+
     }
 
     private void reset3(){
@@ -179,8 +243,11 @@ public class SearchActivity extends AppCompatActivity {
             rating1.setChecked(false);
             rating2.setChecked(false);
             rating4.setChecked(false);
+            makeDaysUnclickable();
+        }else{
+            makeDaysClickable();
         }
-        makeDaysUnclickable();
+
     }
 
     private void reset2(){
@@ -189,8 +256,11 @@ public class SearchActivity extends AppCompatActivity {
             rating1.setChecked(false);
             rating4.setChecked(false);
             rating3.setChecked(false);
+            makeDaysUnclickable();
+        }else{
+            makeDaysClickable();
         }
-        makeDaysUnclickable();
+
     }
 
     private void reset1(){
@@ -199,8 +269,11 @@ public class SearchActivity extends AppCompatActivity {
             rating4.setChecked(false);
             rating2.setChecked(false);
             rating3.setChecked(false);
+            makeDaysUnclickable();
+        }else{
+            makeDaysClickable();
         }
-        makeDaysUnclickable();
+
     }
 
     public void viewProfileButton(View view) {
@@ -267,72 +340,84 @@ public class SearchActivity extends AppCompatActivity {
             }
         }
 
+        if (sun.isEnabled()){
+            if (sun.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(0)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
 
+                    }
+                }
+            }
+            if (mon.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(1)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+            if (tues.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(2)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+            if (wed.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(3)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+            if (thurs.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(4)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+            if (fri.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(5)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+            if (sat.isChecked()){
+                for (int a=0; a < UserList.providers.size(); a++){
+                    if (UserList.providers.get(a).getAvailable(6)){
+                        if (!searches.contains(UserList.providers.get(a).getName())){
+                            otherAdapter.add(UserList.providers.get(a).getName());
+                        }
+                    }
+                }
+            }
+        }
 
-        if (sun.isChecked()){
+        if (serviceSpin.isEnabled()){
+            String serviceSelected = serviceSpin.getSelectedItem().toString();
             for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(0)){
+                if (UserList.providers.get(a).hasService(serviceSelected)){
                     if (!searches.contains(UserList.providers.get(a).getName())){
                         otherAdapter.add(UserList.providers.get(a).getName());
                     }
+                }
+            }
+        }
 
-                }
-            }
-        }
-        if (mon.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(1)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
-        if (tues.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(2)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
-        if (wed.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(3)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
-        if (thurs.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(4)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
-        if (fri.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(5)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
-        if (sat.isChecked()){
-            for (int a=0; a < UserList.providers.size(); a++){
-                if (UserList.providers.get(a).getAvailable(6)){
-                    if (!searches.contains(UserList.providers.get(a).getName())){
-                        otherAdapter.add(UserList.providers.get(a).getName());
-                    }
-                }
-            }
-        }
 
         otherAdapter.notifyDataSetChanged();
         if (searches.isEmpty()){

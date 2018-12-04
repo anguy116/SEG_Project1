@@ -50,6 +50,10 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
             licenseVTextView.setText(lic);
         }
 
+        ratingVTextView = findViewById(R.id.ratingV);
+        String currentRating = "Rating: "+LoginSignUp.prov.getRating();
+        ratingVTextView.setText(currentRating);
+
         sunday = (CheckBox) findViewById(R.id.sundayV);
         sunday.setChecked(LoginSignUp.prov.getAvailable(0));
 
