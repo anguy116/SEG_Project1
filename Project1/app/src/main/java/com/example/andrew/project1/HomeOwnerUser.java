@@ -32,9 +32,7 @@ public class HomeOwnerUser extends User {
         return bookings.isEmpty();
     }
 
-    public String bookingNumber(int number){
-        return bookings.get(number);
-    }
+    public String bookingNumber(int number) { return bookings.get(number); }
 
     public String getEmail() {
         return email;
