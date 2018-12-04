@@ -15,16 +15,16 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_user_screen);
 
-        nameVTextView = (TextView) findViewById(R.id.title);
+        nameVTextView = (TextView) findViewById(R.id.titleV);
         String name = LoginSignUp.prov.getName();
         nameVTextView.setText(name);
 
-        addressVTextView = (TextView) findViewById(R.id.address);
+        addressVTextView = (TextView) findViewById(R.id.addressV);
         String address = LoginSignUp.prov.getAddress();
         String fullA = "Address: "+ address;
         addressVTextView.setText(fullA);
 
-        numberVTextView = (TextView) findViewById(R.id.phone);
+        numberVTextView = (TextView) findViewById(R.id.phoneV);
         String phoneN = LoginSignUp.prov.getPhoneNumber();
         String fullP = "Phone: "+phoneN;
         numberVTextView.setText(fullP);
@@ -41,7 +41,7 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
         String fullS = "Services: " + serve;
         serviceVTextView.setText(fullS);
 
-        licenseVTextView = (TextView) findViewById(R.id.license);
+        licenseVTextView = (TextView) findViewById(R.id.licenseV);
         if (LoginSignUp.prov.isLicensed()==true){
             String lic = "We are licensed!";
             licenseVTextView.setText(lic);
@@ -50,26 +50,26 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
             licenseVTextView.setText(lic);
         }
 
-        sunday = (CheckBox) findViewById(R.id.sunday);
+        sunday = (CheckBox) findViewById(R.id.sundayV);
         sunday.setChecked(LoginSignUp.prov.getAvailable(0));
 
-        monday = (CheckBox) findViewById(R.id.monday);
+        monday = (CheckBox) findViewById(R.id.mondayV);
         monday.setChecked(LoginSignUp.prov.getAvailable(1));
 
-        tuesday = (CheckBox) findViewById(R.id.tuesday);
+        tuesday = (CheckBox) findViewById(R.id.tuesdayV);
         tuesday.setChecked(LoginSignUp.prov.getAvailable(2));
 
 
-        wednesday = (CheckBox) findViewById(R.id.wednesday);
+        wednesday = (CheckBox) findViewById(R.id.wednesdayV);
         wednesday.setChecked(LoginSignUp.prov.getAvailable(3));
 
-        thursday = (CheckBox) findViewById(R.id.thursday);
+        thursday = (CheckBox) findViewById(R.id.thursdayV);
         thursday.setChecked(LoginSignUp.prov.getAvailable(4));
 
-        friday = (CheckBox) findViewById(R.id.friday);
+        friday = (CheckBox) findViewById(R.id.fridayV);
         friday.setChecked(LoginSignUp.prov.getAvailable(5));
 
-        saturday = (CheckBox) findViewById(R.id.saturday);
+        saturday = (CheckBox) findViewById(R.id.saturdayV);
         saturday.setChecked(LoginSignUp.prov.getAvailable(6));
     }
 }
