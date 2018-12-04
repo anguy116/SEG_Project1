@@ -14,7 +14,8 @@ public class ServiceProviderUser extends User {
     private ArrayList<String> services;
     private boolean[] available;
     private double rating;
-    private double noRated;
+    private double totalRating;
+    private int noRated;
 
     public ServiceProviderUser (String email, String password, String companyName, String address, String phoneNumber, boolean licensed){
         this.email = email;
@@ -27,7 +28,7 @@ public class ServiceProviderUser extends User {
         services = new ArrayList<String>();
         available = new boolean[7];
         rating = 0.0;
-        noRated = 0.0;
+        noRated = 0;
 
         for (int a =0; a<7; a++){
             available[a] = false;
@@ -46,7 +47,7 @@ public class ServiceProviderUser extends User {
         services = new ArrayList<String>();
         available = new boolean[7];
         rating = 0.0;
-        noRated = 0.0;
+        noRated = 0;
 
         for (int a =0; a<7; a++){
             available[a] = false;
@@ -75,8 +76,14 @@ public class ServiceProviderUser extends User {
     }
 
     public void updateRating(int rate){
-        noRated = noRated + 1.0;
-        rating = (getRating() + (double) rate)/noRated;
+        // Increases the number of ratings by 1
+        noRated = noRated + 1;
+        // Updates the total rating
+        totalRating += rate;
+        // Calculates the actual rating
+        rating = totalRating/noRated;
+        // Rounds the calculated result to 1 decimal place
+        rating = Math.round(rating * 10.0) / 10.0;
     }
 
     public void setAvailable(boolean today, int day) {
