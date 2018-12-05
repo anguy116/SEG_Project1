@@ -278,15 +278,19 @@ public class SearchActivity extends AppCompatActivity {
 
     public void viewProfileButton(View view) {
         String selected = sResultSpin.getSelectedItem().toString();
-        for (int a =0; a < UserList.providers.size(); a++){
-            if (UserList.providers.get(a).getName().equals(selected)){
-                LoginSignUp.prov = UserList.providers.get(a);
-                //Log.d("this shouldn't be wrong", LoginSignUp.prov.getName());
+
+        if (!(selected==null)){
+            for (int a =0; a < UserList.providers.size(); a++){
+                if (UserList.providers.get(a).getName().equals(selected)){
+                    LoginSignUp.prov = UserList.providers.get(a);
+
+                }
             }
+
+            Intent intent = new Intent(getApplicationContext(), ServiceProviderUserScreenActivity.class);
+            startActivityForResult (intent,0);
         }
 
-        Intent intent = new Intent(getApplicationContext(), ServiceProviderUserScreenActivity.class);
-        startActivityForResult (intent,0);
     }
 
     private void filterAll(){
@@ -418,10 +422,24 @@ public class SearchActivity extends AppCompatActivity {
             }
         }
 
+        if (serviceSpin.getSelectedItem().toString().equals("ANY")){
+            if ((rating1.isEnabled())||rating2.isEnabled()||rating3.isEnabled()||rating4.isEnabled()){
+                if (!rating4.isChecked()&&!rating2.isChecked()&&!rating1.isChecked()&&!rating3.isChecked()){
+                    if (sun.isEnabled()&&mon.isEnabled()&&tues.isEnabled()&&wed.isEnabled()&&thurs.isEnabled()&&fri.isEnabled()&&sat.isEnabled()){
+                        if (!sun.isChecked()&&!mon.isChecked()&&!tues.isChecked()&&!wed.isChecked()&&!thurs.isChecked()&&!fri.isChecked()&&!sat.isChecked()){
+                            for (int z = 0; z < UserList.providers.size();z++){
+                                otherAdapter.add(UserList.providers.get(z).getName());
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         otherAdapter.notifyDataSetChanged();
         if (searches.isEmpty()){
             Toast.makeText(getApplicationContext(), "No Results Found", Toast.LENGTH_SHORT).show();
+            viewProfile.setVisibility(View.INVISIBLE);
         } else {
             sResultSpin.setVisibility(View.VISIBLE);
             viewProfile.setVisibility(View.VISIBLE);

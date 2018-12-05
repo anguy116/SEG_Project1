@@ -44,7 +44,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="23dp" />
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/phoneV"
@@ -54,7 +54,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="23dp" />
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/descriptionV"
@@ -65,7 +65,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/ratingV"
@@ -73,41 +73,9 @@
             android:layout_height="wrap_content"
             android:text="Rating: " />
 
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/rating5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <CheckBox
-                android:id="@+id/rating4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <CheckBox
-                android:id="@+id/rating3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <CheckBox
-                android:id="@+id/rating2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <CheckBox
-                android:id="@+id/rating1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/licenseV"
@@ -123,7 +91,8 @@
             android:id="@+id/availV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Available (10am - 6pm):" />
+            android:text="Available (10am - 6pm): Please keep the day you would like to book checked."
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -206,6 +175,14 @@
                 android:layout_weight="1"
                 android:text="Book Now"
                 android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/rateServ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="rateUsButton"
+                android:text="Rate us!" />
 
         </LinearLayout>
     </LinearLayout>

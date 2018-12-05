@@ -6,18 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ServiceProviderScreenActivity extends AppCompatActivity {
     TextView nameTextView, addressTextView, numberTextView, descriptionTextView, serviceTextView, licenseTextView;
     CheckBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
+    Space tempSpace;
     public static final String EXTRA_MESSAGE =
             "com.example.andrew.project1.extra.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_screen);
+
+        tempSpace = findViewById(R.id.tempSpace);
 
         nameTextView = (TextView) findViewById(R.id.title);
         String name = LoginSignUp.prov.getName();
@@ -30,12 +34,13 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
 
         numberTextView = (TextView) findViewById(R.id.phone);
         String phoneN = LoginSignUp.prov.getPhoneNumber();
-        String fullP = "Phone: "+phoneN;
+        String fullP = "Phone: "+ phoneN;
         numberTextView.setText(fullP);
 
         if (!LoginSignUp.prov.getDescription().equals("")) {
             descriptionTextView = (TextView) findViewById(R.id.description);
             descriptionTextView.setVisibility(View.VISIBLE);
+            tempSpace.setVisibility(View.VISIBLE);
             String fullD = "Description: "+ LoginSignUp.prov.getDescription();
             descriptionTextView.setText(fullD);
         }

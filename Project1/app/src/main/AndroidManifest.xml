@@ -31,6 +31,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".ServiceProviderUserScreenActivity" />
         <activity android:name=".BookingsActivity" />
+        <activity android:name=".RatingActivity"></activity>
     </application>
 
 </manifest>

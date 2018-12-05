@@ -59,7 +59,6 @@ public class ServiceActivity extends AppCompatActivity {
                 delete();
             }
         });
-
     }
     Spinner spin;
     EditText nameTxt, rateTxt;

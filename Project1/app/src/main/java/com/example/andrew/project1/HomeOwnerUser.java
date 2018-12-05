@@ -24,6 +24,10 @@ public class HomeOwnerUser extends User {
         return bookings.size();
     }
 
+    public ArrayList<String> getBookings() {
+        return bookings;
+    }
+
     public void addBooking(String booking) {
         bookings.add(booking);
     }

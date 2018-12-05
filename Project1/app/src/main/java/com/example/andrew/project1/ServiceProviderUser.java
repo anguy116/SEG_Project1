@@ -9,7 +9,6 @@ public class ServiceProviderUser extends User {
     private String phoneNumber;
     private String address;
     private String description;
-    private String availability;
     private boolean licensed;
     private ArrayList<String> services;
     private boolean[] available;
@@ -69,6 +68,10 @@ public class ServiceProviderUser extends User {
             return big;
         }
         return "no services";
+    }
+
+    public ArrayList<String> getServicesProvided(){
+        return services;
     }
 
     public double getRating() {
