@@ -46,5 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="5" />
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="(please leave the comment before rating!)"
+            android:inputType="textPersonName" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
