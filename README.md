@@ -5,7 +5,7 @@ https://github.com/anguy116/SEG_Project1
 
 Build Status
 [![Build
-Status](https://circleci.com/gh/anguy116/SEG_Project1.png?branch=master)](https://circleci.com/gh/SEG_Project1ProductCatalog)
+Status](https://circleci.com/gh/anguy116/SEG_Project1.png?branch=master)](https://circleci.com/gh/anguy116/SEG_Project1)
 
 //Contributors
 Andrew Nguyen
