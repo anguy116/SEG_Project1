@@ -34,7 +34,8 @@
         <Spinner
             android:id="@+id/serviceSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/addressV"
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description: "
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Space
             android:layout_width="match_parent"

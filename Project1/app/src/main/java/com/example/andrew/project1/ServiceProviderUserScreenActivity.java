@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.view.View.GONE;
+
 public class ServiceProviderUserScreenActivity extends AppCompatActivity {
     TextView nameVTextView, addressVTextView, numberVTextView, descriptionVTextView, serviceVTextView, licenseVTextView, ratingVTextView;
     Button bookButton;
@@ -28,6 +30,9 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
         serves1 = (Spinner)findViewById(R.id.serviceSpinner);
         adapterService = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, LoginSignUp.prov.getServicesProvided());
         serves1.setAdapter(adapterService);
+        if (!LoginSignUp.prov.getServicesProvided().isEmpty()){
+            serves1.setVisibility(View.VISIBLE);
+        }
 
         bookButton = findViewById(R.id.bookV);
         bookButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +78,11 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
         }
 
         ratingVTextView = findViewById(R.id.ratingV);
+
         String currentRating = "Rating: "+LoginSignUp.prov.getRating();
+        if (LoginSignUp.prov.getRating()==0){
+            currentRating = "Rating: We have not been rated yet!";
+        }
         ratingVTextView.setText(currentRating);
 
         sunday = (CheckBox) findViewById(R.id.sundayV);
@@ -154,17 +163,24 @@ public class ServiceProviderUserScreenActivity extends AppCompatActivity {
             daySelected = "Saturday";
         }
 
-        if (dayCount==1){
-            String companyName=LoginSignUp.prov.getName()+ " booked for: ";
-            String booking=companyName+serves1.getSelectedItem().toString()+" on "+ daySelected;
-            if (LoginSignUp.home.getBookings().contains(booking)){
-                Toast.makeText(getApplicationContext(), "This booking already exists!", Toast.LENGTH_SHORT).show();
-            } else{
-                LoginSignUp.home.addBooking(booking);
+        if (serves1.getVisibility()==GONE){
+            Toast.makeText(getApplicationContext(), "We do not have any services yet!", Toast.LENGTH_SHORT).show();
+
+        } else{
+            if (dayCount==1){
+                String companyName=LoginSignUp.prov.getName()+ " booked for: ";
+                String booking=companyName+serves1.getSelectedItem().toString()+" on "+ daySelected;
+                if (LoginSignUp.home.getBookings().contains(booking)){
+                    Toast.makeText(getApplicationContext(), "This booking already exists!", Toast.LENGTH_SHORT).show();
+                } else{
+                    LoginSignUp.home.addBooking(booking);
+                    Toast.makeText(getApplicationContext(), "Booking created!", Toast.LENGTH_SHORT).show();
+                }
+            } else if ((dayCount==0)||(dayCount>1)){
+                Toast.makeText(getApplicationContext(), "Please select one day", Toast.LENGTH_SHORT).show();
             }
-        } else if ((dayCount==0)||(dayCount>1)){
-            Toast.makeText(getApplicationContext(), "Please select one day", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void rateUsButton(View view) {

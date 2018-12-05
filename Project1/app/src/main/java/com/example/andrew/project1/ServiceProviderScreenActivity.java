@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ServiceProviderScreenActivity extends AppCompatActivity {
-    TextView nameTextView, addressTextView, numberTextView, descriptionTextView, serviceTextView, licenseTextView;
+    TextView nameTextView, addressTextView, numberTextView, descriptionTextView, serviceTextView, licenseTextView, ratingTextView;
     CheckBox sunday, monday, tuesday, wednesday, thursday, friday, saturday;
     Space tempSpace;
     public static final String EXTRA_MESSAGE =
@@ -49,6 +49,13 @@ public class ServiceProviderScreenActivity extends AppCompatActivity {
         String serve = LoginSignUp.prov.getServices();
         String fullS = "Services: " + serve;
         serviceTextView.setText(fullS);
+
+        ratingTextView = findViewById(R.id.rateProv);
+        String rateMessage = "Rating: "+ LoginSignUp.prov.getRating();
+        if (LoginSignUp.prov.getRating()==0){
+            rateMessage = "Rating: We have not been rated yet!";
+        }
+        ratingTextView.setText(rateMessage);
 
         licenseTextView = (TextView) findViewById(R.id.license);
         if (LoginSignUp.prov.isLicensed()){

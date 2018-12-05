@@ -14,17 +14,21 @@ public class LoggedInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in);
 
+        Button logout = findViewById(R.id.logOut);
+
         TextView mTextView = (TextView) findViewById(R.id.welcomeScreen);
         mTextView.setText(UserList.welcome);
 
         if (UserList.welcome.equals("You are logged in as admin")){
             Button services = findViewById(R.id.serviceButton);
             services.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.VISIBLE);
         }
 
         if (UserList.welcome.contains("service")){
             Button serviceP = findViewById(R.id.serviceProfile);
             serviceP.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.VISIBLE);
         }
 
         if (UserList.welcome.contains("home")){
@@ -32,6 +36,7 @@ public class LoggedInActivity extends AppCompatActivity {
             search.setVisibility(View.VISIBLE);
             Button bookings = findViewById(R.id.viewBook);
             bookings.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -54,6 +59,12 @@ public class LoggedInActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), BookingsActivity.class);
         startActivityForResult (intent,0);
     }
+
+    public void logOutButton(View view){
+        Intent intent = new Intent(getApplicationContext(), LoginSignUp.class);
+        startActivityForResult (intent,0);
+    }
+
 
 
 }

@@ -49,5 +49,13 @@
             android:onClick="bookingsButton"
             android:text="View Bookings"
             android:visibility="gone" />
+
+        <Button
+            android:id="@+id/logOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="logOutButton"
+            android:text="LOG OUT"
+            android:visibility="gone" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
